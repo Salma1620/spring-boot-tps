@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks List Page</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>Tasks list</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Description</th>
+        <th scope="col">details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${taskslist}">
+        <td th:text="${task.id}">ID</td>
+        <td th:text="${task.description}">Description</td>
+        <td>
+            <a th:href="@{/getTaskById/{id}(id=${task.id})}">Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/showAddTaskPage}">Add task</a>
+</body>
+</html>
